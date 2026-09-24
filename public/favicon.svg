@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none">
+  <!-- Glow Filter -->
+  <defs>
+    <filter id="tealGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="anlTealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5a3" />
+      <stop offset="100%" stop-color="#00bcd4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Outer Badge with Mechanical Accents -->
+  <g transform="translate(150, 68)">
+    <!-- Outer Glow Ring -->
+    <circle cx="0" cy="0" r="54" stroke="url(#anlTealGrad)" stroke-width="4.5" fill="#08141c" filter="url(#tealGlow)" opacity="0.4" />
+    <circle cx="0" cy="0" r="52" stroke="url(#anlTealGrad)" stroke-width="3.5" fill="#0b1b24" />
+    
+    <!-- Stylized Wrench / Gear Arcs surrounding ANL -->
+    <!-- Top-Right Mechanical Arc -->
+    <path d="M-28 -40 C -10 -49, 15 -49, 34 -36 C 44 -26, 48 -14, 48 0 C 48 10, 44 20, 36 28" 
+          stroke="url(#anlTealGrad)" stroke-width="5" stroke-linecap="round" fill="none" />
+    <circle cx="34" cy="-36" r="3.5" fill="#00e5a3" />
+    
+    <!-- Bottom-Left Mechanical Arc -->
+    <path d="M28 40 C 10 49, -15 49, -34 36 C -44 26, -48 14, -48 0 C -48 -10, -44 -20, -36 -28" 
+          stroke="url(#anlTealGrad)" stroke-width="5" stroke-linecap="round" fill="none" />
+    <circle cx="-34" cy="36" r="3.5" fill="#00e5a3" />
+
+    <!-- Mechanical Teeth Notches -->
+    <rect x="-4" y="-55" width="8" height="6" rx="2" fill="#00e5a3" />
+    <rect x="-4" y="49" width="8" height="6" rx="2" fill="#00e5a3" />
+    <rect x="-55" y="-4" width="6" height="8" rx="2" fill="#00e5a3" />
+    <rect x="49" y="-4" width="6" height="8" rx="2" fill="#00e5a3" />
+
+    <!-- Text ANL Bold Center -->
+    <text x="0" y="11" 
+          font-family="'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" 
+          font-weight="900" 
+          font-size="28" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2">ANL</text>
+  </g>
+
+  <!-- Typography Below Emblem (Slide 1 exact typography) -->
+  <text x="150" y="152" 
+        font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" 
+        font-weight="800" 
+        font-size="14.5" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        letter-spacing="2.5">ANL ENGENHARIA &amp;</text>
+  
+  <text x="150" y="172" 
+        font-family="'Plus Jakarta Sans', system-ui, sans-serif" 
+        font-weight="700" 
+        font-size="10.5" 
+        fill="#00e5a3" 
+        text-anchor="middle" 
+        letter-spacing="3.5">SOLUÇÕES TÉCNICAS</text>
+</svg>
