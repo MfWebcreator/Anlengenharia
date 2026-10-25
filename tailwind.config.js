@@ -1,27 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        'dark-bg': '#081117',
-        'dark-surface': '#0c1822',
-        'dark-card': '#0e1c26',
-        teal: {
-          400: '#00e5a3',
-          500: '#10b981',
-          900: '#064e3b',
-          950: '#042f2e',
-        }
+        // Paleta extraída do portfólio (PDF)
+        ink: "#0a1f2e",      // fundo dos slides
+        abyss: "#061622",    // fundo mais profundo (seções escuras)
+        deep: "#083f46",     // cabeçalho das tabelas
+        brand: "#00bfa5",    // verde/teal dos títulos e linhas
+        forest: "#00806f",   // verde escuro (botões e cartões, no lugar do azul do design)
+        mint: "#7ff0dc",
+        paper: "#f3f4f4",
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-        display: ['Outfit', 'sans-serif'],
-      }
+        sans: ['"Manrope"', "system-ui", "sans-serif"],
+        display: ['"Inter Tight"', '"Manrope"', "system-ui", "sans-serif"],
+        head: ['"Poppins"', '"Manrope"', "system-ui", "sans-serif"],
+      },
     },
   },
   plugins: [],
-}
+};

@@ -1,60 +1,68 @@
-import React from 'react';
-import TechBackground from './components/TechBackground';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Metrics from './components/Metrics';
-import Desafios from './components/Desafios';
-import QuemSomos from './components/QuemSomos';
-import PropostaValor from './components/PropostaValor';
-import Servicos from './components/Servicos';
-import CalculadoraROI from './components/CalculadoraROI';
-import Diferenciais from './components/Diferenciais';
-import Contato from './components/Contato';
-import Footer from './components/Footer';
+import React, { useEffect } from "react";
+import Lenis from "lenis";
+import Cursor from "./components/Cursor";
+import FloatingNav from "./components/FloatingNav";
+import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
+import Desafio from "./components/Desafio";
+import QuemSomos from "./components/QuemSomos";
+import Proposta from "./components/Proposta";
+import Servicos from "./components/Servicos";
+import Diferenciais from "./components/Diferenciais";
+import Contato from "./components/Contato";
 
 export default function App() {
+  // Rolagem suave e responsiva + âncoras do menu
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.65,
+      smoothWheel: true,
+      wheelMultiplier: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    let raf;
+    const loop = (t) => {
+      lenis.raf(t);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+
+    const onClick = (e) => {
+      const a = e.target.closest?.('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href");
+      if (id === "#inicio") {
+        e.preventDefault();
+        lenis.scrollTo(0, { duration: 1.4 });
+        return;
+      }
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: 0, duration: 1.4 });
+    };
+    document.addEventListener("click", onClick);
+    return () => {
+      cancelAnimationFrame(raf);
+      document.removeEventListener("click", onClick);
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 relative selection:bg-cyan-500 selection:text-slate-950">
-      {/* Interactive Tech Particle Canvas Background */}
-      <TechBackground />
-
-      {/* Main App Container */}
-      <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Navigation Bar */}
-        <Navbar />
-
-        <main className="flex-grow">
-          {/* Slide 01: Hero Presentation */}
-          <Hero />
-
-          {/* Quick Metrics Bar */}
-          <Metrics />
-
-          {/* Slide 02: Desafios da Indústria */}
-          <Desafios />
-
-          {/* Slide 03: Quem Somos & Pilares */}
-          <QuemSomos />
-
-          {/* Slide 04: Proposta de Valor Concreta */}
-          <PropostaValor />
-
-          {/* Slides 05 a 08: Portfólio de Serviços */}
-          <Servicos />
-
-          {/* Interactive ROI Calculator */}
-          <CalculadoraROI />
-
-          {/* Slide 09: Matriz de Diferenciais */}
-          <Diferenciais />
-
-          {/* Slide 10: Contato Direto & Proposta */}
-          <Contato />
-        </main>
-
-        {/* Footer */}
-        <Footer />
-      </div>
-    </div>
+    <>
+      <Cursor />
+      <FloatingNav />
+      <main>
+        <Hero />
+        <Marquee />
+        <Desafio />
+        <QuemSomos />
+        <Proposta />
+        <Servicos />
+        <Diferenciais />
+        <Contato />
+      </main>
+    </>
   );
 }
